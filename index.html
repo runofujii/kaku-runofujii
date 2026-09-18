@@ -1,1 +1,1145 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Runo Fujii （架空）構築設計事務所</title>
+  <meta name="description" content="Runo Fujii （架空）構築設計事務所。藤井琉乃による架空の組織。詩・映像・建築・音楽・デザイン・展示・研究。">
+
+  <style>
+    :root {
+      --bg: #f4f3ee;
+      --text: #171717;
+      --sub: #777;
+      --line: #bdbdb7;
+      --accent: #1d1d1d;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family:
+        "Helvetica Neue",
+        Helvetica,
+        Arial,
+        "Hiragino Kaku Gothic ProN",
+        "Hiragino Sans",
+        YuGothic,
+        sans-serif;
+      font-size: 14px;
+      line-height: 1.8;
+      letter-spacing: 0.02em;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    a:hover {
+      opacity: 0.55;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    /* --------------------
+       HEADER
+    -------------------- */
+
+    header {
+      position: fixed;
+      z-index: 100;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 18px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      mix-blend-mode: multiply;
+      pointer-events: none;
+    }
+
+    .site-title {
+      font-size: 13px;
+      line-height: 1.3;
+      pointer-events: auto;
+    }
+
+    .site-title span {
+      display: block;
+    }
+
+    nav {
+      pointer-events: auto;
+    }
+
+    nav a {
+      margin-left: 18px;
+      font-size: 12px;
+    }
+
+    /* --------------------
+       MAIN
+    -------------------- */
+
+    main {
+      padding: 110px 24px 100px;
+    }
+
+    section {
+      margin-bottom: 180px;
+      scroll-margin-top: 100px;
+    }
+
+    .section-title {
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 45px;
+      color: var(--sub);
+    }
+
+    /* --------------------
+       HERO
+    -------------------- */
+
+    .hero {
+      min-height: 75vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding-bottom: 40px;
+    }
+
+    .hero h1 {
+      font-size: clamp(34px, 7vw, 92px);
+      font-weight: 400;
+      letter-spacing: -0.05em;
+      line-height: 0.95;
+      margin: 0;
+      max-width: 1100px;
+    }
+
+    .hero h1 small {
+      display: block;
+      font-size: 0.32em;
+      letter-spacing: 0;
+      margin-top: 20px;
+    }
+
+    .hero-note {
+      margin-top: 35px;
+      max-width: 520px;
+      color: var(--sub);
+    }
+
+    /* --------------------
+       ABOUT
+    -------------------- */
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 50px;
+    }
+
+    .about-text {
+      max-width: 700px;
+    }
+
+    .about-text p {
+      margin-top: 0;
+      margin-bottom: 30px;
+    }
+
+    .placeholder {
+      min-height: 350px;
+      border: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--sub);
+      font-size: 11px;
+    }
+
+    /* --------------------
+       BIOGRAPHY
+    -------------------- */
+
+    .bio-grid {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 50px;
+    }
+
+    .bio-name {
+      font-size: 28px;
+      line-height: 1.2;
+      margin-bottom: 15px;
+    }
+
+    .bio-role {
+      color: var(--sub);
+      line-height: 1.5;
+    }
+
+    .bio-content {
+      max-width: 750px;
+    }
+
+    .bio-content p {
+      margin-top: 0;
+      margin-bottom: 35px;
+    }
+
+    .bio-content hr {
+      border: 0;
+      border-top: 1px solid var(--line);
+      margin: 35px 0;
+    }
+
+    .timeline {
+      display: grid;
+      grid-template-columns: 90px 1fr;
+      gap: 5px 20px;
+      margin-bottom: 40px;
+    }
+
+    .timeline .year {
+      color: var(--sub);
+    }
+
+    /* --------------------
+       WORKS
+    -------------------- */
+
+    .work-index {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 25px;
+      margin-bottom: 70px;
+    }
+
+    .work-index a {
+      border-bottom: 1px solid var(--text);
+    }
+
+    .work-category {
+      margin-bottom: 100px;
+    }
+
+    .work-category h3 {
+      font-size: 18px;
+      font-weight: 400;
+      margin: 0 0 30px;
+    }
+
+    .work-list {
+      border-top: 1px solid var(--line);
+    }
+
+    .work-item {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 20px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .work-year {
+      color: var(--sub);
+    }
+
+    .work-description {
+      max-width: 900px;
+    }
+
+    .work-description strong {
+      font-weight: 400;
+    }
+
+    .note {
+      color: var(--sub);
+      font-size: 12px;
+    }
+
+    /* --------------------
+       MUSIC
+    -------------------- */
+
+    .music-intro {
+      max-width: 700px;
+      margin-bottom: 45px;
+    }
+
+    .track-list {
+      columns: 2;
+      column-gap: 50px;
+      max-width: 800px;
+    }
+
+    .track {
+      break-inside: avoid;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    /* --------------------
+       CONTACT
+    -------------------- */
+
+    .contact-large {
+      font-size: clamp(25px, 4vw, 55px);
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      margin-bottom: 50px;
+    }
+
+    .contact-info {
+      max-width: 650px;
+    }
+
+    .social-list {
+      margin-top: 50px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      max-width: 800px;
+    }
+
+    .social-list a {
+      padding: 15px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    /* --------------------
+       FOOTER
+    -------------------- */
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 20px 24px 35px;
+      display: flex;
+      justify-content: space-between;
+      color: var(--sub);
+      font-size: 11px;
+    }
+
+    /* --------------------
+       RESPONSIVE
+    -------------------- */
+
+    @media (max-width: 700px) {
+
+      body {
+        font-size: 13px;
+      }
+
+      header {
+        padding: 14px 16px;
+      }
+
+      header nav {
+        display: none;
+      }
+
+      main {
+        padding: 90px 16px 70px;
+      }
+
+      section {
+        margin-bottom: 120px;
+      }
+
+      .hero {
+        min-height: 70vh;
+      }
+
+      .hero h1 {
+        font-size: 24px;
+      }
+
+      .about-grid,
+      .bio-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .placeholder {
+        min-height: 250px;
+      }
+
+      .work-item {
+        grid-template-columns: 55px 1fr;
+        gap: 12px;
+      }
+
+      .track-list {
+        columns: 1;
+      }
+
+      .social-list {
+        grid-template-columns: 1fr;
+      }
+
+      footer {
+        padding-left: 16px;
+        padding-right: 16px;
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+
+
+<body>
+
+<header>
+  <div class="site-title">
+    <span>Runo Fujii</span>
+    <span>（架空）構築設計事務所</span>
+  </div>
+
+  <nav>
+    <a href="#about">ABOUT</a>
+    <a href="#biography">BIOGRAPHY</a>
+    <a href="#works">WORKS</a>
+    <a href="#contact">CONTACT</a>
+  </nav>
+</header>
+
+
+<main>
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <h1>
+      Runo Fujii
+      <small>（架空）構築設計事務所</small>
+    </h1>
+
+    <div class="hero-note">
+      詩・映像・建築・音楽・デザイン・展示・研究
+    </div>
+
+  </section>
+
+
+  <!-- ABOUT -->
+
+  <section id="about">
+
+    <div class="section-title">ABOUT</div>
+
+    <div class="about-grid">
+
+      <div>
+        <div class="placeholder">
+          IMAGE
+        </div>
+      </div>
+
+      <div class="about-text">
+
+        <p>
+          こんにちは。<br>
+          こちらは「Runo Fujii （架空）構築設計事務所」。<br>
+          藤井琉乃による架空の組織です。
+        </p>
+
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- BIOGRAPHY -->
+
+  <section id="biography">
+
+    <div class="section-title">BIOGRAPHY</div>
+
+    <div class="bio-grid">
+
+      <div>
+
+        <div class="bio-name">
+          藤井琉乃<br>
+          <span class="note">Runo Fujii</span>
+        </div>
+
+        <div class="bio-role">
+          Poet / Filmmaker / Architect / Musician / Designer / Curator / Researcher
+          <br><br>
+          詩・映像・建築・音楽・デザイン・展示・研究
+        </div>
+
+      </div>
+
+
+      <div class="bio-content">
+
+        <p>
+          2000年東京生まれ。大阪育ち。京都在住。<br>
+          京都工芸繊維大学デザイン・建築学課程卒業。<br>
+          京都工芸繊維大学大学院建築学専攻博士前期課程に在籍。<br>
+          朽木研究室。
+        </p>
+
+        <hr>
+
+        <p>―<br>インターンシップ歴</p>
+
+        <div class="timeline">
+          <div class="year">2021年</div>
+          <div>魚谷繁礼建築研究所 2週間インターンシップ</div>
+
+          <div class="year">2024年</div>
+          <div>木村松本建築事務所 3週間インターンシップ</div>
+
+          <div class="year">2025年</div>
+          <div>タトアーキテクツ 2週間インターンシップ</div>
+
+          <div class="year">2026年</div>
+          <div>David Leclerc Architecture 1週間インターンシップ</div>
+        </div>
+
+        <p>
+          2026年2月から7月まで、ヴェルサイユ国立建築大学
+          （École Nationale Supérieure d'architecture de Versailles）
+          にて建築留学。留学中に2週間バンコクでワークショップ。
+        </p>
+
+        <p>―</p>
+
+        <p>
+          建築だけでなく、詩、映像、音楽、ひいては社会まで、
+          異なる次元のもののあいだに生まれる関係性と、
+          それらを構築するときに立ち上がるイメージの共有に関心を持っていて、
+          分野を横断しながら制作・研究を行ってます。
+          このホームページもその一環として試作。
+        </p>
+
+        <p>
+          10代から詩作に取り組み、
+          「第二十六回お～いお茶新俳句大賞」入選、
+          「花椿 今月の詩」（2025年12月）掲載。
+          詩をもとにした音楽制作も行っており、
+          YouTube上で発表しています。
+          アーティスト名は lenole 。
+        </p>
+
+        <p>
+          大学の映像サークル映像研究会オリヲン座で
+          さまざまな作品の制作に携わるなかで映像制作に興味を持ち、
+          同座で初監督作『“Collage City”』を制作するほか、
+          個人制作としても映像作品を制作しています。
+        </p>
+
+        <p>
+          学芸員資格有（2024年3月取得）。<br>
+          世界遺産検定2級。<br>
+          フィギュアスケートバッジテスト3級。<br>
+          いんちきうらない師
+          （自称。UNOでいんちきな占いができます）。
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- WORKS -->
+
+  <section id="works">
+
+    <div class="section-title">WORKS</div>
+
+    <div class="work-index">
+      <a href="#poem">POEM</a>
+      <a href="#film">FILM</a>
+      <a href="#music">MUSIC</a>
+      <a href="#publish">PUBLISH</a>
+      <a href="#design">DESIGN</a>
+      <a href="#exposition">EXPOSITION</a>
+      <a href="#architecture">ARCHITECTURE</a>
+    </div>
+
+
+    <!-- POEM -->
+
+    <div class="work-category" id="poem">
+
+      <h3>POEM</h3>
+
+      <div class="work-list">
+
+        <div class="work-item">
+          <div class="work-year">2014</div>
+          <div class="work-description">
+            『一番星夕焼け空をすい込んで』
+            <br>
+            第二十六回伊藤園お～いお茶新俳句大賞佳作
+          </div>
+        </div>
+
+        <div class="work-item">
+          <div class="work-year">2025</div>
+          <div class="work-description">
+            「言葉を語る為の記号と記号を読む為の言葉」*
+            <br>
+            資生堂花椿 2025年12月の詩選出
+            <span class="note">（選評：環Royさん）</span>
+            <br>
+            <span class="note">
+              *白井優乃クレジット
+            </span>
+          </div>
+        </div>
+
+        <div class="work-item">
+          <div class="work-year"></div>
+          <div class="work-description">
+            詩集『Music interface』
+            <br>
+            学祭にて販売
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- FILM -->
+
+    <div class="work-category" id="film">
+
+      <h3>FILM</h3>
+
+      <div class="work-list">
+
+        <div class="work-item">
+          <div class="work-year">2022</div>
+          <div>
+            『紫苑』
+            <br>
+            出演：ビデオレター参加者役*
+            <br>
+            森 大樹監督（制作：オリヲン座）
+            <br>
+            <span class="note">
+              学祭上映 ／ *以下出演時クレジットは白井優乃
+            </span>
+          </div>
+        </div>
+
+        <div class="work-item">
+          <div class="work-year"></div>
+          <div>
+            『モノがたり』
+            <br>
+            原案・声の出演・エンドロール制作
+            <br>
+            安岡里都監督（制作：オリヲン座）
+            <br>
+            <span class="note">学祭上映</span>
+          </div>
+        </div>
+
+        <div class="work-item">
+          <div class="work-year">2023</div>
+          <div>
+            『はしのはなし』
+            <br>
+            原案・助手・出演：少年役
+            <br>
+            梅田航輝監督（制作：オリヲン座）
+            <br>
+            <span class="note">
+              第1回スポットライト映画祭入選、学祭上映
+            </span>
+          </div>
+        </div>
+
+        <div class="work-item">
+          <div class="work-year"></div>
+          <div>
+            『mican』
+            <br>
+            出演：世界の祖役
+            <br>
+            森 大樹監督（制作：オリヲン座）
+            <br>
+            <span class="note">学祭上映</span>
+          </div>
+        </div>
+
+        <div class="work-item">
+          <div class="work-year">2024</div>
+          <div>
+            『Photosynthesis of 』3部作
+            <br>
+            『Photosynthesis of the city（KYOTO）』
+            <br>
+            『TIMES／Tadao Ando／2024』
+            <br>
+            『Umbrella's whimsical emotional forecast／傘の気まぐれな感情予報』
+            <br>
+            <span class="note">個人制作 ／ 学祭展示</span>
+          </div>
+        </div>
+
+        <div class="work-item">
+          <div class="work-year"></div>
+          <div>
+            『GreenRooms』
+            <br>
+            一部CGモデリング
+            <br>
+            監督・制作不明*
+            <br>
+            <span class="note">
+              *作品コンセプト上、不明としている ／ 学祭展示
+            </span>
+          </div>
+        </div>
+
+        <div class="work-item">
+          <div class="work-year"></div>
+          <div>
+            『そして、光を知る。』
+            <br>
+            出演：宮崎椿役
+            <br>
+            森 大樹監督（制作：オリヲン座）
+            <br>
+            <span class="note">学祭上映</span>
+          </div>
+        </div>
+
+        <div class="work-item">
+          <div class="work-year"></div>
+          <div>
+            『montage』
+            <br>
+            出演：エキストラ
+            <br>
+            大久保颯太監督
+          </div>
+        </div>
+
+        <div class="work-item">
+          <div class="work-year">2025</div>
+          <div>
+            『“Collage City”』
+            <br>
+            脚本・監督・編集・音楽・出演：おばあさん役
+            <br>
+            <span class="note">
+              第3回スポットライト映画祭入選、学祭上映
+            </span>
+          </div>
+        </div>
+
+        <div class="work-item">
+          <div class="work-year"></div>
+          <div>
+            『GELEL』
+            <br>
+            共同脚本・指揮所舞台美術監督・監督補・ジオラマ製作補佐・編集助手・広報・演出
+            <br>
+            森 大樹監督
+            <br>
+            <span class="note">
+              第24回全国自主怪獣映画選手権 特撮のまち・須賀川大会
+              田口清隆賞受賞（登壇）、
+              名古屋学生映画祭入選、
+              十三下町映画祭2026入選
+            </span>
+          </div>
+        </div>
+
+        <div class="work-item">
+          <div class="work-year"></div>
+          <div>
+            『Pallet』
+            <br>
+            個人制作
+          </div>
+        </div>
+
+        <div class="work-item">
+          <div class="work-year">2026</div>
+          <div>
+            lenoleのミュージックビデオ
+            <br>
+            『ジーザスビーサン履いて踊り場で屈伸』
+            <br>
+            『wani』
+            <br>
+            『Drive』
+            <br>
+            個人制作
+          </div>
+        </div>
+
+        <div class="work-item">
+          <div class="work-year"></div>
+          <div>
+            『除霊』
+            <br>
+            撮影助手*
+            <br>
+            青木志央理監督
+            <br>
+            <span class="note">
+              第37回東京学生映画祭TSFF入選、名古屋学生映画祭入選
+              <br>
+              *ぬいぐるみたちを棚から落とす操演
+            </span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+    <!-- MUSIC -->
+
+    <div class="work-category" id="music">
+
+      <h3>MUSIC</h3>
+
+      <div class="music-intro">
+
+        <p>
+          <strong>lenole</strong>（2024年3月～）
+        </p>
+
+        <p>
+          lenoleはルノルと読みます。
+          自分の名前の読み方を由来にしながら、
+          ほかの文字で表せて、どこか音符のような形になるように名付けました。
+        </p>
+
+        <p class="note">
+          楽曲（現在16曲）
+        </p>
+
+      </div>
+
+      <div class="track-list">
+
+        <div class="track">『スニーカーとスカート』</div>
+        <div class="track">『ゆらゆら揺れるだけで』</div>
+        <div class="track">『とぶとりおとせ』</div>
+        <div class="track">『モールス』</div>
+        <div class="track">『オムライス』</div>
+        <div class="track">『サンタのいないクリスマス』</div>
+        <div class="track">『ノストラ・アスパラ・シュレディンガー』</div>
+        <div class="track">『タヒチとイルカ』</div>
+        <div class="track">『Float Journey』</div>
+        <div class="track">『名ばかりの石鹸』</div>
+        <div class="track">『ジーザスビーサン履いて踊り場で屈伸』</div>
+        <div class="track">『wani』</div>
+        <div class="track">『Drive』</div>
+
+      </div>
+
+    </div>
+
+
+    <!-- PUBLISH -->
+
+    <div class="work-category" id="publish">
+
+      <h3>PUBLISH</h3>
+
+      <div class="work-list">
+
+        <div class="work-item">
+          <div class="work-year"></div>
+          <div>
+            雑記たち
+            <br>
+            <a href="https://docs.google.com/document/d/e/2PACX-1vRDcGy4SGsteWAalbfWME7QKcJqMnqWWiHgbVbo6vnLsaCqV5tdfIgpxqJS7dqtrXgAKYl-1vW9bc5a/pub"
+               target="_blank"
+               rel="noopener">
+              → ページを読む
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- DESIGN -->
+
+    <div class="work-category" id="design">
+
+      <h3>DESIGN</h3>
+
+      <div class="work-list">
+
+        <div class="work-item">
+          <div class="work-year">2022</div>
+          <div>サークルTシャツ</div>
+        </div>
+
+        <div class="work-item">
+          <div class="work-year">2023</div>
+          <div>学祭立て看板</div>
+        </div>
+
+        <div class="work-item">
+          <div class="work-year">2024</div>
+          <div>
+            学祭チラシ
+            <br>
+            父の誕生日のためのマフラー
+          </div>
+        </div>
+
+        <div class="work-item">
+          <div class="work-year">2025</div>
+          <div>いんちきうらない</div>
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- EXPOSITION -->
+
+    <div class="work-category" id="exposition">
+
+      <h3>EXPOSITION</h3>
+
+      <div class="work-list">
+
+        <div class="work-item">
+          <div class="work-year"></div>
+          <div>
+            京都工芸繊維大学美術工芸資料館
+            <br>
+            「田中一光ポスター展　舞台と文字ののぞき穴から」
+            <br>
+            博物館実習にて他メンバーと共同制作。
+            作品選出・展示準備・展示。
+            タイトル発案。
+          </div>
+        </div>
+
+        <div class="work-item">
+          <div class="work-year">2024</div>
+          <div>
+            2024年度松ヶ崎祭オリヲン座上映会における展示室
+            <br>
+            共同企画・運営
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- ARCHITECTURE -->
+
+    <div class="work-category" id="architecture">
+
+      <h3>ARCHITECTURE</h3>
+
+      <div class="work-list">
+
+        <div class="work-item">
+          <div class="work-year">2020–2024</div>
+          <div>
+            学士課程個人設計課題ポートフォリオ
+            <br>
+            『Runo Fujii Aruchitecture Portfolio』
+          </div>
+        </div>
+
+        <div class="work-item">
+          <div class="work-year">2023</div>
+          <div>
+            Kyoto Design Lab × EPFL　Circularスタジオ
+            <br>
+            『v=tree(lacquer)　Lose yourself in the speed of the lacquer』
+          </div>
+        </div>
+
+        <div class="work-item">
+          <div class="work-year">2024</div>
+          <div>
+            Kyoto Design Lab　
+            <br>
+            大阪万博スイスパビリオンスタジオ
+            <br>
+            『Virtual Expo at Gorilla’s house』
+            <br>
+            『ETFE temporary toilet』（共同設計）
+          </div>
+        </div>
+
+        <div class="work-item">
+          <div class="work-year"></div>
+          <div>
+            学士課程卒業制作
+            <br>
+            『波打ち際のConnection』
+          </div>
+        </div>
+
+        <div class="work-item">
+          <div class="work-year"></div>
+          <div>
+            博士前期課程スタジオ設計
+            <br>
+            『設計と施工のイメージの融合としてのオフィスビル』
+          </div>
+        </div>
+
+        <div class="work-item">
+          <div class="work-year">2025</div>
+          <div>
+            Kyoto Design Lab Falaスタジオ参加
+          </div>
+        </div>
+
+        <div class="work-item">
+          <div class="work-year"></div>
+          <div>
+            博士前期課程修了論文
+            <br>
+            「コーリン・ロウの認識論・構築論について
+            -“Collage City“分析」
+          </div>
+        </div>
+
+        <div class="work-item">
+          <div class="work-year">2026</div>
+          <div>
+            CUURP × Ensa Versailles Urban-Architecture Studio
+            <br>
+            『Plan ABCD in water territories』
+          </div>
+        </div>
+
+        <div class="work-item">
+          <div class="work-year"></div>
+          <div>
+            博士前期課程修了制作（制作中）
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- CONTACT -->
+
+  <section id="contact">
+
+    <div class="section-title">CONTACT</div>
+
+    <div class="contact-large">
+      お誘いやご依頼の<br>
+      ご相談お待ちしております。
+    </div>
+
+    <div class="contact-info">
+
+      <p>
+        <a href="mailto:runofujiicontact@gmail.com">
+          runofujiicontact@gmail.com
+        </a>
+        <br>
+        又は下記InstagramのDM
+        <br>
+        LINEが繋がっている方はそちらでも◎
+      </p>
+
+      <p>
+        （共同制作、各種デザイン、手伝い、出演、寄稿、占いなど）
+      </p>
+
+    </div>
+
+
+    <div class="social-list">
+
+      <a href="https://www.instagram.com/ru.no____?igsh=MWMxY29ncGw4ZjU2dQ=="
+         target="_blank"
+         rel="noopener">
+        Instagram　@ru.no____ ↗
+      </a>
+
+      <a href="https://youtube.com/@fuuu_ruuu?si=ma_2qJiFnqyQCo9h"
+         target="_blank"
+         rel="noopener">
+        YouTube　@fuuuruuu（映像） ↗
+      </a>
+
+      <a href="https://youtube.com/@lenole-yb7im?si=eHbnR1f4m9ATGpv0"
+         target="_blank"
+         rel="noopener">
+        YouTube　@lenole-yb7im（音楽） ↗
+      </a>
+
+      <a href="#"
+         onclick="alert('SoundCloudのリンクは準備中です。'); return false;">
+        SoundCloud ↗
+      </a>
+
+    </div>
+
+  </section>
+
+</main>
+
+
+<footer>
+
+  <div>
+    Runo Fujii （架空）構築設計事務所
+  </div>
+
+  <div>
+    © 2026 Runo Fujii
+  </div>
+
+</footer>
+
+
+</body>
+</html>
 
