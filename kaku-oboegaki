@@ -1,0 +1,282 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>架空についての覚書 | Runo Fujii</title>
+  <meta name="description" content="Runo Fujii（架空）構築設計事務所による、架空についての覚書。">
+
+  <style>
+    :root {
+      --bg: #f4f3ee;
+      --text: #171717;
+      --sub: #777;
+      --line: #bdbdb7;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family:
+        "Helvetica Neue",
+        Helvetica,
+        Arial,
+        "Hiragino Kaku Gothic ProN",
+        "Hiragino Sans",
+        YuGothic,
+        sans-serif;
+      font-size: 14px;
+      line-height: 1.9;
+      letter-spacing: 0.02em;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    a:hover {
+      opacity: 0.55;
+    }
+
+    /* HEADER */
+
+    header {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 22px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .site-title {
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .site-title span {
+      display: block;
+    }
+
+    .back-link {
+      font-size: 12px;
+      letter-spacing: 0.08em;
+    }
+
+    /* MAIN */
+
+    main {
+      padding: 155px 24px 120px;
+    }
+
+    .document {
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .document-label {
+      color: var(--sub);
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      margin-bottom: 30px;
+    }
+
+    h1 {
+      font-size: clamp(28px, 5vw, 46px);
+      font-weight: 400;
+      line-height: 1.5;
+      letter-spacing: 0.02em;
+      margin: 0 0 20px;
+    }
+
+    .document-meta {
+      color: var(--sub);
+      font-size: 12px;
+      margin-bottom: 65px;
+    }
+
+    /* TABLE OF CONTENTS */
+
+    .toc {
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      padding: 24px 0;
+      margin-bottom: 75px;
+    }
+
+    .toc-title {
+      font-size: 11px;
+      color: var(--sub);
+      letter-spacing: 0.12em;
+      margin-bottom: 15px;
+    }
+
+    .toc ol {
+      padding-left: 22px;
+      margin: 0;
+    }
+
+    .toc li {
+      padding: 3px 0;
+    }
+
+    /* ESSAY */
+
+    .essay-section {
+      margin-bottom: 75px;
+      scroll-margin-top: 30px;
+    }
+
+    h2 {
+      font-size: 20px;
+      font-weight: 400;
+      line-height: 1.6;
+      margin: 0 0 30px;
+    }
+
+    .essay-section p {
+      margin: 0 0 1.7em;
+      text-align: left;
+    }
+
+    .essay-section p:last-child {
+      margin-bottom: 0;
+    }
+
+    .essay-section a {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .endnote {
+      color: var(--sub);
+      font-size: 12px;
+    }
+
+    /* FOOTER */
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 25px 24px 35px;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      color: var(--sub);
+      font-size: 11px;
+    }
+
+    @media (max-width: 700px) {
+      body {
+        font-size: 13px;
+      }
+
+      header {
+        padding: 16px;
+      }
+
+      main {
+        padding: 125px 22px 80px;
+      }
+
+      .document-meta {
+        margin-bottom: 45px;
+      }
+
+      .toc {
+        margin-bottom: 55px;
+      }
+
+      .essay-section {
+        margin-bottom: 60px;
+      }
+
+      h2 {
+        font-size: 18px;
+      }
+
+      footer {
+        padding: 22px 16px 30px;
+        flex-direction: column;
+        gap: 8px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <a class="site-title" href="index.html">
+      <span>R u n o   F u j i i</span>
+      <span>（架空）構築設計事務所</span>
+    </a>
+
+    <a class="back-link" href="index.html">← TOP</a>
+  </header>
+
+  <main>
+    <article class="document">
+
+      <div class="document-label">MEMORANDUM / 001</div>
+
+      <h1>架空についての覚書</h1>
+
+      <div class="document-meta">
+        Runo Fujii （架空）構築設計事務所
+      </div>
+
+      <!-- 目次：章を増やす場合はここにも追加 -->
+
+      <nav class="toc" aria-label="目次">
+        <div class="toc-title">CONTENTS</div>
+        <ol>
+          <li><a href="#section-01">架空について</a></li>
+          <li><a href="#section-02">組織について</a></li>
+          <li><a href="#section-03">構築することについて</a></li>
+        </ol>
+      </nav>
+
+      <!-- 第一章 -->
+
+      <section class="essay-section" id="section-01">
+        <h2>　(架空)について</h2>
+
+        <p>
+          架空もいんちきと同様に便利な言葉。少し怪しさはあって、簡単に信用を得る言葉ではないけれど、空を架けるというふうにも読めて素敵だとも思う。それをまた（）で囲っているのはその方がより架空感が出そうだし、架空をやや否定することで若干の真実味、あるという意味での過不足ない真実味がこっそりと顔を覗かせるくらいがいいなと思ったから。真実とコンテンツは語感が似ていて、まったくの対語ではないけれど、組み合わせとして好き。（架空）を構築するのかもしれないし、構築するということが（架空）なのかもしれない。それくらいの気楽さが気に入っている。
+
+        </p>
+
+        <p>
+          どこからどこまでがフィクションなのかは言語化してはっきり言えるものじゃないような気もしている。言語化できないことは、しようとすると土壺にはまるし、言葉で表現できないものを表現するために世界は3次元でできていて、時間が流れて、音楽があって、匂いがするんだと思う。それに、この世界のすべてをもってしても正確に表現できないことはあると思う。だから無理はしたくない。明らかにしたい欲求はあっても、それができると思うのは驕りかもしれない。
+        </p>
+      </section>
+
+
+      <p class="endnote">
+        本ページは、Runo Fujii（架空）構築設計事務所による覚書です。
+      </p>
+
+    </article>
+  </main>
+
+  <footer>
+    <div>Runo Fujii （架空）構築設計事務所</div>
+    <div>© 2026 Runo Fujii</div>
+  </footer>
+
+</body>
+</html>
