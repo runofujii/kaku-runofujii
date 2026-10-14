@@ -415,8 +415,69 @@
   　　　text-align: center;
 　　　}
 
+/* 覚書モーダル */
+.memorandum-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.45);
+  padding: 4vh 4vw;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+}
+
+.memorandum-overlay.is-open {
+  display: flex;
+}
+
+.memorandum-window {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  height: 92vh;
+  background: #f4f3ee;
+  overflow: hidden;
+}
+
+.memorandum-close {
+  position: absolute;
+  z-index: 2;
+  top: 12px;
+  right: 16px;
+  border: 0;
+  background: #f4f3ee;
+  color: #171717;
+  font: inherit;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 4px 10px;
+}
+
+.memorandum-frame {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+body.memorandum-open {
+  overflow: hidden;
+}
+
+@media (max-width: 600px) {
+  .memorandum-overlay {
+    padding: 0;
+  }
+
+  .memorandum-window {
+    height: 100dvh;
+    max-width: none;
+  }
+}
     
-    }
+
   </style>
 </head>
 
@@ -475,9 +536,8 @@
   こんにちは。<br>
   こちらは「Runo Fujii （架空）構築設計事務所」。<br>
   藤井琉乃による架空の組織です。<br><br>
-  <a href="kaku-oboegaki.html"
-     rel="noopener">
-    架空についての覚書 ↗
+  <a href="kaku-oboegaki.html" id="open-memorandum">
+  架空についての覚書 ↗
   </a>
 </p>
 
@@ -1151,6 +1211,76 @@
 </footer>
 
 
+<div
+  class="memorandum-overlay"
+  id="memorandum-overlay"
+  aria-hidden="true"
+>
+  <div
+    class="memorandum-window"
+    role="dialog"
+    aria-modal="true"
+    aria-label="架空についての覚書"
+  >
+    <button
+      class="memorandum-close"
+      id="close-memorandum"
+      aria-label="閉じる"
+      type="button"
+    >×</button>
+
+    <iframe
+      class="memorandum-frame"
+      id="memorandum-frame"
+      title="架空についての覚書"
+    ></iframe>
+  </div>
+</div>
+
+<script>
+  const openLink = document.getElementById("open-memorandum");
+  const overlay = document.getElementById("memorandum-overlay");
+  const closeButton = document.getElementById("close-memorandum");
+  const frame = document.getElementById("memorandum-frame");
+
+  function openMemorandum(event) {
+    event.preventDefault();
+
+    if (!frame.src) {
+      frame.src = “kaku-oboegaki.html";
+    }
+
+    overlay.classList.add("is-open");
+    overlay.setAttribute("aria-hidden", "false");
+    document.body.classList.add("memorandum-open");
+    closeButton.focus();
+  }
+
+  function closeMemorandum() {
+    overlay.classList.remove("is-open");
+    overlay.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("memorandum-open");
+    openLink.focus();
+  }
+
+  openLink.addEventListener("click", openMemorandum);
+  closeButton.addEventListener("click", closeMemorandum);
+
+  overlay.addEventListener("click", function (event) {
+    if (event.target === overlay) {
+      closeMemorandum();
+    }
+  });
+
+  document.addEventListener("keydown", function (event) {
+    if (
+      event.key === "Escape" &&
+      overlay.classList.contains("is-open")
+    ) {
+      closeMemorandum();
+    }
+  });
+</script>
 </body>
 </html>
 
