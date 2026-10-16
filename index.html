@@ -478,42 +478,62 @@
       }
     }
   @media screen and (max-width: 700px) {
-  /* ABOUTセクションの上下の大きな空白をなくす */
+  /* ページ上部の余白 */
+  main {
+    padding: 80px 16px 40px;
+  }
+
+  /* 最初のタイトル部分 */
+  .hero {
+    min-height: auto;
+    padding-top: 20px;
+    padding-bottom: 40px;
+  }
+
+  /* セクション間の余白 */
+  section {
+    margin-bottom: 64px;
+    scroll-margin-top: 80px;
+  }
+
+  /* ABOUT */
   #about {
-    height: auto !important;
-    min-height: 0 !important;
-    padding-top: 32px !important;
-    padding-bottom: 32px !important;
-    margin-top: 0 !important;
-    margin-bottom: 0 !important;
+    display: block;
+    height: auto;
+    min-height: 0;
+    padding: 0;
+    margin-bottom: 64px;
+  }
+
+  #about .section-title {
+    margin-bottom: 24px;
+  }
+
+  #about .about-grid {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start !important;
     gap: 24px;
   }
 
-  /* ABOUT見出し */
-  #about h2 {
-    margin: 0 !important;
-  }
-
-  /* ABOUT内の画像・動画 */
-  #about img,
-  #about video,
+  /* 動画 */
   #about .hero-video {
-    display: block;
     width: 100%;
-    max-width: 100%;
-    height: auto !important;
-    margin: 0 !important;
+    height: auto;
+    max-height: none;
+    margin: 0;
+    object-fit: contain;
   }
 
-  /* ABOUT内の文章 */
-  #about p {
-    margin-top: 0 !important;
-    margin-bottom: 12px !important;
+  /* 紹介文 */
+  #about .about-text p {
+    margin: 0 0 16px;
   }
-}  
+
+  /* フッター */
+  footer {
+    margin-top: 0;
+  }
+}
   </style>
 </head>
 
