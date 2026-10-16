@@ -460,11 +460,15 @@
         padding: 0;
       }
 
-      .memorandum-window {
-        height: 100vh;
-        height: 100dvh;
-        max-width: none;
-      }
+     .memorandum-window {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  height: 500px;
+  max-height: 90vh;
+  background: var(--bg);
+  overflow: hidden;
+}
 
       .memorandum-close {
         top: 8px;
@@ -1148,7 +1152,20 @@
       const overlay = document.getElementById("memorandum-overlay");
       const closeButton = document.getElementById("close-memorandum");
       const frame = document.getElementById("memorandum-frame");
+window.addEventListener("message", (event) => {
+  if (event.origin !== location.origin) return;
+  if (event.data?.type !== "memorandum-height") return;
 
+  const height = Number(event.data.height);
+  if (!Number.isFinite(height) || height <= 0) return;
+
+  const windowElement = document.querySelector(".memorandum-window");
+  if (!windowElement) return;
+
+  const maxHeight = window.innerHeight * 0.9;
+  windowElement.style.height =
+    Math.min(height, maxHeight) + "px";
+});
       if (!openLink || !overlay || !closeButton || !frame) {
         return;
       }
