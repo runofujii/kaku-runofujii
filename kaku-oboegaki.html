@@ -80,7 +80,7 @@
     /* MAIN */
 
     main {
-      padding: 155px 24px 120px;
+      padding: 155px 24px 40px;
     }
 
     .document {
@@ -189,7 +189,7 @@
       }
 
       main {
-        padding: 125px 22px 80px;
+        padding: 125px 22px 30px;
       }
 
       .document-meta {
@@ -216,7 +216,29 @@
     }
   </style>
 </head>
+<script>
+  function reportHeight() {
+    const header = document.querySelector("header");
+    const main = document.querySelector("main");
+    const footer = document.querySelector("footer");
 
+    const contentBottom = Math.max(
+      header.offsetHeight,
+      main.offsetTop + main.offsetHeight
+    );
+
+    const totalHeight = contentBottom + footer.offsetHeight;
+
+    parent.postMessage({
+      type: "memorandum-height",
+      height: totalHeight
+    }, location.origin);
+  }
+
+  window.addEventListener("load", reportHeight);
+  window.addEventListener("resize", reportHeight);
+  setTimeout(reportHeight, 300);
+</script>
 <body>
 
   <header>
