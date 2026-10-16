@@ -510,28 +510,37 @@
   }
 
   #about .section-title {
-    margin-bottom: 24px;
+    margin-bottom: 12px !important;
   }
 
   #about .about-grid {
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 0 !important;
+    row-gap: 0 !important;
   }
 
-  /* 動画 */
+  /* 動画の前後の余白 */
   #about .hero-video {
+    display: block;
     width: 100%;
-    height: auto;
-    max-height: none;
-    margin: 0;
+    height: auto !important;
+    max-height: none !important;
+    margin: 0 0 12px !important;
+    padding: 0 !important;
     object-fit: contain;
   }
 
   /* 紹介文 */
-  #about .about-text p {
-    margin: 0 0 16px;
+  #about .about-text {
+    margin: 0 !important;
+    padding: 0 !important;
   }
+
+  #about .about-text p {
+    margin: 0 0 16px !important;
+  }
+
 
   /* フッター */
   footer {
