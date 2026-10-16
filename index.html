@@ -747,25 +747,37 @@ body.memorandum-open {
   </div>
 </div>
 
+
 <script>
 (() => {
-  const link = document.getElementById("open-memorandum");
+  const links = document.querySelectorAll(".open-popup");
   const overlay = document.getElementById("memorandum-overlay");
   const close = document.getElementById("close-memorandum");
   const frame = document.getElementById("memorandum-frame");
+  const dialog = overlay.querySelector('[role="dialog"]');
 
-  if (!link || !overlay || !close || !frame) return;
+  if (!links.length || !overlay || !close || !frame) return;
+
+  let activeLink = null;
 
   function openModal(event) {
     event.preventDefault();
 
-    if (!frame.getAttribute("src")) {
-      frame.src = "kaku-oboegaki.html";
-    }
+    activeLink = event.currentTarget;
+
+    // クリックしたリンク先のHTMLを読み込む
+    frame.src = activeLink.href;
+
+    const title =
+      activeLink.dataset.popupTitle || "ページ";
+
+    frame.title = title;
+    dialog.setAttribute("aria-label", title);
 
     overlay.classList.add("is-open");
     overlay.setAttribute("aria-hidden", "false");
     document.body.classList.add("memorandum-open");
+
     close.focus();
   }
 
@@ -773,23 +785,36 @@ body.memorandum-open {
     overlay.classList.remove("is-open");
     overlay.setAttribute("aria-hidden", "true");
     document.body.classList.remove("memorandum-open");
-    link.focus();
+
+    // 閉じたら、開いたリンクにフォーカスを戻す
+    if (activeLink) {
+      activeLink.focus();
+    }
   }
 
-  link.addEventListener("click", openModal);
+  links.forEach(link => {
+    link.addEventListener("click", openModal);
+  });
+
   close.addEventListener("click", closeModal);
 
   overlay.addEventListener("click", event => {
-    if (event.target === overlay) closeModal();
+    if (event.target === overlay) {
+      closeModal();
+    }
   });
 
   document.addEventListener("keydown", event => {
-    if (event.key === "Escape" && overlay.classList.contains("is-open")) {
+    if (
+      event.key === "Escape" &&
+      overlay.classList.contains("is-open")
+    ) {
       closeModal();
     }
   });
 })();
 </script>
+
 
 </body>
 </html>
